@@ -1,3 +1,4 @@
 # timer
-Timer (vanilla.js)
-Demo on http://ome1ia.ru/timer/
+Timer on vanilla.js.
+
+[Demo] (http://ome1ia.ru/timer/)
