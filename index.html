@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Timer</title>
+
+	<link href="src/css/timer_demo.min.css" rel="stylesheet">
+
+	<!--Modernizr-->
+	<script src="src/js/modernizr-custom.min.js" type="text/javascript"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="screen">
+	<div class="wrapper timer-wrapper">
+		<div class="timer">
+			<h1 class="timer_title">Until <b>1 May</b></h1>
+			<div class="timer_block" id="timer">
+				<div class="timer_days">
+					<div class="days_block">
+						<div class="days_number" id="timer_days_1_block">
+							<div class="days_number-change">
+								<div class="days_number-change-front" id="timer_days_1_front"></div>
+								<div class="days_number-change-back"><span id="timer_days_1_back"></span></div>
+								<div class="days_number-change-top"></div>
+							</div>
+							<div class="days_number_bottom"><span id="timer_days_1_bottom"></span></div>
+							<div class="days_number_fon" id="timer_days_1"></div>
+						</div>
+						<div class="days_number" id="timer_days_2_block">
+							<div class="days_number-change">
+								<div class="days_number-change-front" id="timer_days_2_front"></div>
+								<div class="days_number-change-back"><span id="timer_days_2_back"></span></div>
+								<div class="days_number-change-top"></div>
+							</div>
+							<div class="days_number_bottom"><span id="timer_days_2_bottom"></span></div>
+							<div class="days_number_fon" id="timer_days_2"></div>
+						</div>
+					</div>
+					<div class="days_title">
+						/days
+					</div>
+				</div>
+
+				<div class="timer_time">
+					<div class="timer_time_title">
+						/h
+					</div>
+
+					<div class="time_block">
+						<div class="time_number" id="timer_hours_1_block">
+							<div class="time_number-change">
+								<div class="time_number-change-front" id="timer_hours_1_front"></div>
+								<div class="time_number-change-back"><span id="timer_hours_1_back"></span></div>
+								<div class="time_number-change-top"></div>
+							</div>
+							<div class="time_number_bottom"><span id="timer_hours_1_bottom"></span></div>
+							<div class="time_number_fon" id="timer_hours_1"></div>
+						</div>
+						<div class="time_number" id="timer_hours_2_block">
+							<div class="time_number-change">
+								<div class="time_number-change-front" id="timer_hours_2_front"></div>
+								<div class="time_number-change-back"><span id="timer_hours_2_back"></span></div>
+								<div class="time_number-change-top"></div>
+							</div>
+							<div class="time_number_bottom"><span id="timer_hours_2_bottom"></span></div>
+							<div class="time_number_fon" id="timer_hours_2"></div>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="timer_time">
+					<div class="timer_time_title">
+						/m
+					</div>
+
+					<div class="time_block">
+						<div class="time_number" id="timer_minutes_1_block">
+							<div class="time_number-change">
+								<div class="time_number-change-front" id="timer_minutes_1_front"></div>
+								<div class="time_number-change-back"><span id="timer_minutes_1_back"></span></div>
+								<div class="time_number-change-top"></div>
+							</div>
+							<div class="time_number_bottom"><span id="timer_minutes_1_bottom"></span></div>
+							<div class="time_number_fon" id="timer_minutes_1"></div>
+						</div>
+						<div class="time_number" id="timer_minutes_2_block">
+							<div class="time_number-change">
+								<div class="time_number-change-front" id="timer_minutes_2_front"></div>
+								<div class="time_number-change-back"><span id="timer_minutes_2_back"></span></div>
+								<div class="time_number-change-top"></div>
+							</div>
+							<div class="time_number_bottom"><span id="timer_minutes_2_bottom"></span></div>
+							<div class="time_number_fon" id="timer_minutes_2"></div>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="timer_time">
+					<div class="timer_time_title">
+						/s
+					</div>
+
+					<div class="time_block">
+						<div class="time_number" id="timer_seconds_1_block">
+							<div class="time_number-change">
+								<div class="time_number-change-front" id="timer_seconds_1_front"></div>
+								<div class="time_number-change-back"><span id="timer_seconds_1_back"></span></div>
+								<div class="time_number-change-top"></div>
+							</div>
+							<div class="time_number_bottom"><span id="timer_seconds_1_bottom"></span></div>
+							<div class="time_number_fon" id="timer_seconds_1"></div>
+						</div>
+						<div class="time_number" id="timer_seconds_2_block">
+							<div class="time_number-change">
+								<div class="time_number-change-front" id="timer_seconds_2_front"></div>
+								<div class="time_number-change-back"><span id="timer_seconds_2_back"><span></div>
+								<div class="time_number-change-top"></div>
+							</div>
+							<div class="time_number_bottom"><span id="timer_seconds_2_bottom"></span></div>
+							<div class="time_number_fon" id="timer_seconds_2"></div>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div><!--/wrapper-->
+	</div><!--/screen-->
+
+<script type="text/javascript">
+	(function setTimer(startTime){
+		var diff, diff_1, diff_2;
+		var now = new Date();
+		var startDay = (new Date(startTime) )/(1000*60*60*24);
+
+		var startDate = {
+			'days'		: startDay^0,
+			'hours'		: 24,
+			'minutes'	: 59,
+			'seconds'	: 59
+		};
+
+		var nowDate = {
+			'days'		: now/(1000*60*60*24)^0,
+			'hours'		: now.getHours(),
+			'minutes'	: now.getMinutes(),
+			'seconds'	: now.getSeconds()
+		};
+
+		//add static text in timer
+		for (var time in nowDate) {
+		    diff = startDate[time] - nowDate[time];
+		    diff_1 = (diff/10^0 > 0) ? diff/10^0 : 0;
+		    diff_2 = (diff%10 > 0) ? diff%10 : 0;
+
+	    	document.getElementById('timer_'+time+'_1').innerHTML = document.getElementById('timer_'+time+'_1_bottom').innerHTML = document.getElementById('timer_'+time+'_1_front').innerHTML = diff_1;
+	    	document.getElementById('timer_'+time+'_1_back').innerHTML = (diff_1 - 1);
+
+	    	document.getElementById('timer_'+time+'_2').innerHTML = document.getElementById('timer_'+time+'_2_bottom').innerHTML = document.getElementById('timer_'+time+'_2_front').innerHTML = diff_2;
+	    	document.getElementById('timer_'+time+'_2_back').innerHTML = (diff_2 - 1);
+		    
+		  };
+
+		  //run timer
+		  var timer = setTimeout(function setTime() {
+			  var diff, block_1, block_2, timerText;
+			  var now = new Date();
+			  var nowDate = {
+								'days'		: now/(1000*60*60*24)^0,
+								'hours'		: now.getHours(),
+								'minutes'	: now.getMinutes(),
+								'seconds'	: now.getSeconds()
+							};
+
+			  for (var time in nowDate) {
+			    diff = startDate[time] - nowDate[time];
+
+			    block_1_id = 'timer_'+time+'_1';
+			    block_2_id = 'timer_'+time+'_2';
+			    
+			    timerText = +(document.getElementById(block_1_id).innerHTML + document.getElementById(block_2_id).innerHTML);
+
+			    if (diff && diff != timerText) {
+			      if( ((diff-timerText) < 10) && (diff%10 != 9) ) {
+			          animateTimer([block_2_id], [diff%10]);
+			      } else {
+			          animateTimer([block_1_id, block_2_id], [(diff/10^0), diff%10]);
+			      }
+			    };
+			    
+			  };
+
+			  timer = setTimeout(setTime, 1000);
+			}, 1000);
+		 
+
+	}( Date.UTC(2018,04,01) ));
+
+ 
+
+	function animateTimer(id, num) {
+	    var id = id;
+	    var num = num;
+	    for (var i = id.length - 1; i >= 0; i--) {
+	        document.getElementById(id[i]).innerHTML = document.getElementById(id[i]+'_back').innerHTML = num[i];
+	        document.getElementById(id[i]+'_block').className += ' timer-animated';
+	    };
+
+	    setTimeout(function() {
+	        for (var i = id.length - 1; i >= 0; i--) {
+	            document.getElementById(id[i]+'_front').innerHTML = document.getElementById(id[i]+'_bottom').innerHTML = num[i];
+	            document.getElementById(id[i]+'_block').className =  document.getElementById(id[i]+'_block').className.replace(/ timer-animated/,'');
+	        };
+	    }, 700);
+	}
+</script>
+</body>
+</html>
