@@ -20,7 +20,7 @@
 <div class="screen">
 	<div class="wrapper timer-wrapper">
 		<div class="timer">
-			<h1 class="timer_title">Until <b>1 May</b></h1>
+			<h1 class="timer_title">Until <b>next month</b></h1>
 			<div class="timer_block" id="timer">
 				<div class="timer_days">
 					<div class="days_block">
@@ -140,14 +140,14 @@
 	(function setTimer(startTime){
 		var diff, diff_1, diff_2;
 		var now = new Date();
-		var startDay = (new Date(startTime) )/(1000*60*60*24);
+		var startDay = (new Date(startTime) );
 
 		if((startDay - now) < 0) {
 			return; //fix negative numbers
 		}
 
 		var startDate = {
-			'days'		: startDay^0,
+			'days'		: startDay/(1000*60*60*24)^0,
 			'hours'		: 24,
 			'minutes'	: 59,
 			'seconds'	: 59
@@ -207,7 +207,7 @@
 			}, 1000);
 		 
 
-	}( Date.UTC(2018,04,01) ));
+	}( getNextMonth() ));
 
  
 
@@ -225,6 +225,16 @@
 	            document.getElementById(id[i]+'_block').className =  document.getElementById(id[i]+'_block').className.replace(/ timer-animated/,'');
 	        };
 	    }, 700);
+	}
+
+	function getNextMonth() {
+		var now = new Date();
+
+		var year = now.getFullYear()
+		var month = now.getMonth() + 1;
+		var nextMonth = Date.UTC(year,month,01);
+
+		return nextMonth;
 	}
 </script>
 </body>
